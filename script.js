@@ -132,6 +132,7 @@ animate();
 -----------------------------------------------------------
 --------------------------------------------------------- */
 
+//add functions to set the sprite map, spritesheet, and animation name
 function walkDown() {
     spriteAnimation = spriteAnimationsWalk;
     playerMove = playerWalk;
