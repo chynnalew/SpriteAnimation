@@ -113,5 +113,6 @@ function walkRight() {
 const sliderInput = document.getElementById('sliderSpeed');
 
 sliderInput.addEventListener('change', function () {
-    staggerFrames = this.value;
+    // subtract the value from the max to invert the slider
+    staggerFrames = this.max - this.value + 1;
 });

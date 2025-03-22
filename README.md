@@ -10,7 +10,7 @@
 
 A simple spritesheet animation loop using JavaScript and the canvas element. To view the animations, open the proper html file in the browser:
 
-* index.html contains the final project with all features laid out in these steps:
+* index.html contains the final project with all features laid out in these steps and the use of multiple spritesheets:
 
 * singleAnimation_step1/indexSimple.html demonstrates a single simple animation loop
 

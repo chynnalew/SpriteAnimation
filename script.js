@@ -173,5 +173,5 @@ function deathRight() {
 const sliderInput = document.getElementById('sliderSpeed');
 
 sliderInput.addEventListener('change', function () {
-    staggerFrames = this.value;
+    staggerFrames = this.max + 1 - this.value;
 });
