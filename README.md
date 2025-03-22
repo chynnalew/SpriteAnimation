@@ -10,7 +10,7 @@
 
 Animate any sprite sheet with javascript!
 
-Created using Frank Dvorak's "JavaScript Game Development for Beginners: Sprite Animation"
+Partially inspired by Frank Dvorak's "JavaScript Game Development for Beginners: Sprite Animation"
 
 ## Known Bugs
 
