@@ -81,8 +81,17 @@ function animate() {
     //start by clearing out the whole canvas rectangle between each animation frame
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+    //set the number of frames per animation
+    let numberOfFrames = 7;
+
+    //create a variable that only cycles between 0 and the frameNumber
+    let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
+
+    //set frameX in relation to the position in the animation
+    frameX = spriteWidth * position;
+
     //pull in and scale the spritesheet with drawImage. Now's the time to use all those variables!
-    ctx.drawImage(playerWalk, frameX * spriteWidth, frameY * spriteWidth, spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
+    ctx.drawImage(playerWalk, frameX , frameY, spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
 
     //create a parent conditional to control the animation speed - the staggerFrames number controls how much time passes between each image change
     if (gameFrame % staggerFrames == 0) {

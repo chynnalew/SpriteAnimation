@@ -20,9 +20,6 @@ h1 {
 2. Styles for the canvas element 
 -------------------------------
 ----------------------------- */
-/* 
-The height and width are set as variables (in index.html within the canvas tag) to prevent distortion
-*/
 #canvas {
     background-color: white;
     border: pink 10px solid;
