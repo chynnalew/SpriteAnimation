@@ -31,40 +31,61 @@ playerWalk.src = 'spritesheets/walk.png';
 
 const spriteHeight = 80;
 const spriteWidth = 80;
-
-let frameX = 0;
-let frameY = 0;
-
 const scaleX = 400;
 const scaleY = 400;
-
 const startingPosX = -120;
 const startingPosY = -125;
-
 let gameFrame = 0;
 const staggerFrames = 15;
 
-function animate() {
+// create an empty array to hold the data for all the different animations
+const spriteAnimations = [];
+
+//create a variable that stores the names and number of frames for each animation
+const animationStates = [
+    {
+        name: 'walk right',
+        frames: 8,
+    },
+    {
+        name: 'walk down',
+        frames: 8,
+    },
+    {
+        name: 'walk up',
+        frames: 8,
+    }
+]
+
+//create a function that maps out each animation frame's position on the spritesheet into an array
+animationStates.forEach(function (singleAnimation, index) {
+    let frames = {
+        location: [],
+    }
+    for (let j = 0; j < singleAnimation.frames; j++) {
+        let positionX = j * spriteWidth;
+        let positionY = index * spriteHeight;
+        frames.location.push({ x: positionX, y: positionY });
+    }
+    spriteAnimations[singleAnimation.name] = frames;
+});
+
+//add a variable to the animate function that can be used to trigger each animation by name
+function animate(animationName) {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    //set the number of frames per animation
-    let numberOfFrames = 7;
-    //create a variable that only cycles between 0 and the frameNumber
+    //use the array map to find the number of frames for the chosen animation
+    let numberOfFrames = spriteAnimations[animationName].location.length;
+
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
-    //set frameX in relation to the position in the animation
-    frameX = spriteWidth * position;
+
+    // create variables that will change based on the animation's height and frame number position
+    let frameX = spriteWidth * position;
+    let frameY = spriteAnimations[animationName].location[position].y;
 
     ctx.drawImage(playerWalk, frameX , frameY , spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
 
-    if (gameFrame % staggerFrames == 0) {
-        if (frameX < 7) {
-            frameX++;
-        } else {
-            frameX = 0;
-        }
-    }
     gameFrame++;
-
     requestAnimationFrame(animate);
 };
 
