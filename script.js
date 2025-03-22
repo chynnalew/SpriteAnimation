@@ -26,24 +26,35 @@ const CANVAS_WIDTH = my_canvas.width = '150';
 -----------------------------------------------------------
 --------------------------------------------------------- */
 
+//add spritesheets
 const playerWalk = new Image();
 playerWalk.src = 'spritesheets/walk.png';
 
+const playerDeath = new Image();
+playerDeath.src = 'spritesheets/death.png';
+
+//necessary variables
 const spriteHeight = 80;
 const spriteWidth = 80;
 const scaleX = 400;
 const scaleY = 400;
 const startingPosX = -120;
 const startingPosY = -125;
+
 let gameFrame = 0;
-//set the initial staggerFrames speed (changes with a slider input)
 let staggerFrames = 15;
-//set the initial player state (changes with click functions)
 let playerState = 'walk right'
 
-const spriteAnimations = [];
+//Create arrays to store the maps for each spritesheet
+const spriteAnimationsWalk = [];
+const spriteAnimationsDeath = [];
 
-const animationStates = [
+//Create variables that can change the spritesheet and array map
+let spriteAnimation = spriteAnimationsWalk;
+let playerMove = playerWalk;
+
+//create an object array for each sheet with the animation names and frames
+const animationStatesWalk = [
     {
         name: 'walk right',
         frames: 8,
@@ -57,32 +68,58 @@ const animationStates = [
         frames: 8,
     }
 ]
+const animationStatesDeath = [
+    {
+        name: 'death right',
+        frames: 6,
+    },
+    {
+        name: 'death down',
+        frames: 6,
+    },
+    {
+        name: 'death up',
+        frames: 6,
+    }
+]
 
-//map out each animation frame's position on the spritesheet into an array
-animationStates.forEach(function (singleAnimation, index) {
+//map out each animation frame's position on the spritesheet into an array (do this for each spritesheet)
+animationStatesWalk.forEach(function (singleAnimation, i) {
     let frames = {
         location: [],
     }
     for (let j = 0; j < singleAnimation.frames; j++) {
         let positionX = j * spriteWidth;
-        let positionY = index * spriteHeight;
+        let positionY = i * spriteHeight;
         frames.location.push({ x: positionX, y: positionY });
     }
-    spriteAnimations[singleAnimation.name] = frames;
+    spriteAnimationsWalk[singleAnimation.name] = frames;
+});
+
+animationStatesDeath.forEach(function (singleAnimation, i) {
+    let frames = {
+        location: [],
+    }
+    for (let j = 0; j < singleAnimation.frames; j++) {
+        let positionX = j * spriteWidth;
+        let positionY = i * spriteHeight;
+        frames.location.push({ x: positionX, y: positionY });
+    }
+    spriteAnimationsDeath[singleAnimation.name] = frames;
 });
 
 //animation function
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    let numberOfFrames = spriteAnimations[playerState].location.length;
+    let numberOfFrames = spriteAnimation[playerState].location.length;
 
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
 
     let frameX = spriteWidth * position;
-    let frameY = spriteAnimations[playerState].location[position].y;
+    let frameY = spriteAnimation[playerState].location[position].y;
 
-    ctx.drawImage(playerWalk, frameX , frameY , spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
+    ctx.drawImage(playerMove, frameX, frameY, spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
 
     gameFrame++;
     requestAnimationFrame(animate);
@@ -96,13 +133,35 @@ animate();
 --------------------------------------------------------- */
 
 function walkDown() {
+    spriteAnimation = spriteAnimationsWalk;
+    playerMove = playerWalk;
     playerState = 'walk down';
 }
 function walkUp() {
+    spriteAnimation = spriteAnimationsWalk;
+    playerMove = playerWalk;
     playerState = 'walk up';
 }
 function walkRight() {
+    spriteAnimation = spriteAnimationsWalk;
+    playerMove = playerWalk;
     playerState = 'walk right';
+}
+
+function deathDown() {
+    spriteAnimation = spriteAnimationsDeath;
+    playerMove = playerDeath;
+    playerState = 'death down';
+}
+function deathUp() {
+    spriteAnimation = spriteAnimationsDeath;
+    playerMove = playerDeath;
+    playerState = 'death up';
+}
+function deathRight() {
+    spriteAnimation = spriteAnimationsDeath;
+    playerMove = playerDeath;
+    playerState = 'death right';
 }
 
 /* -------------------------------------------------------
