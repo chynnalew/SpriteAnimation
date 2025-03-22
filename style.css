@@ -1,6 +1,8 @@
-/*
-General html styles for flavor
-*/
+/* ---------------------------
+------------------------------
+1. General html styles for flavor
+-------------------------------
+----------------------------- */
 html {
     background-color: black;
 }
@@ -10,12 +12,13 @@ h1 {
     margin-top: 50px;
     text-align: center;
 }
-/* --- end styles for flavor --- */
 
-
+/* ----------------------------
+-------------------------------
+2. Styles for the canvas element 
+-------------------------------
+----------------------------- */
 /* 
-Styles for the canvas element 
-
 The height and width are set as global variables (in index.html within the canvas tag) to prevent distortion
 */
 #canvas {
