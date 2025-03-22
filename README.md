@@ -20,7 +20,7 @@ MIT 2021
 
 ## Credits
 
-Partially inspired by Frank Dvorak's "JavaScript Game Development for Beginners: Sprite Animation"
+Inspired by Frank Dvorak's "JavaScript Game Development for Beginners: Sprite Animation"
 
 Created using the Hana Caraka - Base Character sprite sheets created by the Otterisk (see spritesheets/ReadMe.txt)
 
