@@ -10,9 +10,9 @@
 
 A simple spritesheet animation loop using JavaScript and the canvas element. To view the animations, open the proper html file in the browser:
 
- * indexSimple.html (using scriptSimple.js and styleSimple.css) demonstrates a single simple animation loop and contain detailed instructions in the comments.
+* singleAnimation_step1/indexSimple.html demonstrates a single simple animation loop
 
-* index.html (using script.js and style.css) demonstrates switching between multiple animations on a single spritesheet by clicking the animation name.
+* singleSpriteSheet_step2/indexSingleSheet.html demonstrates switching between multiple animations on a single spritesheet by clicking the animation name.
 
 ## License
 
