@@ -38,6 +38,9 @@ const startingPosY = -125;
 let gameFrame = 0;
 const staggerFrames = 15;
 
+//create a variable to hold the animation (playerState)
+let playerState = 'walk right'
+
 // create an empty array to hold the data for all the different animations
 const spriteAnimations = [];
 
@@ -71,22 +74,36 @@ animationStates.forEach(function (singleAnimation, index) {
 });
 
 //add a variable to the animate function that can be used to trigger each animation by name
-function animate(animationName) {
+function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     //use the array map to find the number of frames for the chosen animation
-    let numberOfFrames = spriteAnimations[animationName].location.length;
+    let numberOfFrames = spriteAnimations[playerState].location.length;
 
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
+    console.log(staggerFrames);
 
     // create variables that will change based on the animation's height and frame number position
     let frameX = spriteWidth * position;
-    let frameY = spriteAnimations[animationName].location[position].y;
+    let frameY = spriteAnimations[playerState].location[position].y;
 
     ctx.drawImage(playerWalk, frameX , frameY , spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
 
     gameFrame++;
     requestAnimationFrame(animate);
 };
-
 animate();
+/* -------------------------------------------------------
+----------------------------------------------------------
+3. TRIGGERING THE ANIMATION
+-----------------------------------------------------------
+--------------------------------------------------------- */
+function walkDown() {
+    playerState = 'walk down';
+}
+function walkUp() {
+    playerState = 'walk up';
+}
+function walkRight() {
+    playerState = 'walk right';
+}
