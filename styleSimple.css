@@ -14,30 +14,20 @@ h1 {
     font-size: 32px;
     text-align: center;
 }
-.buttons{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px
-}
-p {
-    color: pink;
-    font-family: 'Courier New';
-    font-size: 20px;
-    text-decoration: underline;
-    margin:10px
-}
+
 /* ----------------------------
 -------------------------------
 2. Styles for the canvas element 
 -------------------------------
 ----------------------------- */
-.canvasContainer{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-}
+/* 
+The height and width are set as variables (in index.html within the canvas tag) to prevent distortion
+*/
 #canvas {
     background-color: white;
     border: pink 10px solid;
+    left: 50%;
+    position: absolute;
+    top: 140px;
+    transform: translateX(-50%);
 }
