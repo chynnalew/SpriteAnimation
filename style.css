@@ -1,5 +1,25 @@
-#canvas{
-    border: pink 5px solid;
+/*
+General html styles for flavor
+*/
+html {
+    background-color: black;
+}
+
+h1 {
+    color: greenyellow;
+    margin-top: 50px;
+    text-align: center;
+}
+/* --- end styles for flavor --- */
+
+
+/* 
+Styles for the canvas element 
+
+the height and width are set in index.html within the canvas tag to prevent distortion
+*/
+#canvas {
+    border: greenyellow 5px solid;
     left: 50%;
     position: absolute;
     top: 50%;
