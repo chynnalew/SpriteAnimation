@@ -1,0 +1,33 @@
+/* ---------------------------
+------------------------------
+1. General html styles for flavor
+-------------------------------
+----------------------------- */
+html {
+    background-color: rgb(0, 0, 0);
+}
+
+h1 {
+    color: pink;
+    margin-top: 50px;
+    font-family: 'Courier New';
+    font-size: 32px;
+    text-align: center;
+}
+
+/* ----------------------------
+-------------------------------
+2. Styles for the canvas element 
+-------------------------------
+----------------------------- */
+/* 
+The height and width are set as variables (in index.html within the canvas tag) to prevent distortion
+*/
+#canvas {
+    background-color: white;
+    border: pink 10px solid;
+    left: 50%;
+    position: absolute;
+    top: 140px;
+    transform: translateX(-50%);
+}

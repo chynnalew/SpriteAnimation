@@ -8,11 +8,11 @@
 
 ## Description
 
-A simple spritesheet animation loop using JavaScript and the canvas element. 
+A simple spritesheet animation loop using JavaScript and the canvas element. To view the animations: open the proper html file in the browser.
 
- * index.html, script.js, and style.css demonstrate a single simple animation loop and contain detailed instructions in the comments.
+ * index.html (using script.js and style.css) demonstrates a single simple animation loop and contain detailed instructions in the comments.
 
-* index2.html, script2.js, and style2.css demonstrate
+* index2.html (using script2.js and style2.css) demonstrates
 
 ## License
 
