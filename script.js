@@ -1,4 +1,6 @@
-//Function to keep lines sharp when scaled up (larger screens/ zoomed in)
+/*
+Function to create the canvas object and keep lines sharp when the image is scaled up (ex: when the browser is zoomed in)
+*/
 function setupCanvas(canvas) {
     // Get the device pixel ratio, falling back to 1.
     var dpr = window.devicePixelRatio || 1;
@@ -15,5 +17,13 @@ function setupCanvas(canvas) {
     return ctx;
 }
 
+/*
+Target the canvas element from index.html and set up the canvas object using our above function
+*/
 var canvas1 = document.getElementById('canvas');
 var ctx = setupCanvas(canvas1);
+
+/*
+You can view the canvas properties in the console
+*/
+console.log(ctx);

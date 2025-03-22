@@ -16,7 +16,7 @@ h1 {
 /* 
 Styles for the canvas element 
 
-the height and width are set in index.html within the canvas tag to prevent distortion
+The height and width are set as global variables (in index.html within the canvas tag) to prevent distortion
 */
 #canvas {
     border: greenyellow 5px solid;
