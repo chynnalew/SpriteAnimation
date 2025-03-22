@@ -1,6 +1,6 @@
 /* ---------------------------
 ------------------------------
-1. General html styles for flavor
+1. General html styles
 -------------------------------
 ----------------------------- */
 html {
@@ -29,7 +29,7 @@ p {
 }
 /* ----------------------------
 -------------------------------
-2. Styles for the canvas element 
+2. Canvas Element
 -------------------------------
 ----------------------------- */
 .canvasContainer{
@@ -40,4 +40,54 @@ p {
 #canvas {
     background-color: white;
     border: pink 10px solid;
+    margin-left: -10px;
+}
+/* ----------------------------
+-------------------------------
+3. Speed Slider
+-------------------------------
+----------------------------- */
+.slideContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: #fff;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: gray;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px rgba(172, 255, 47, 0.7);
+    }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: gba(172, 255, 47, 0.7); 
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #fff;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: gba(172, 255, 47, 0.7); 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #fff;
 }
