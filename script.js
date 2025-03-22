@@ -71,6 +71,7 @@ const startingPosX = -120;
 const startingPosY = -125;
 
 // Create variables to control animation speed
+//the staggerFrames number controls how much time passes between each image change - a larger number = a slower animation
 let gameFrame = 0;
 const staggerFrames = 15;
 
@@ -84,7 +85,7 @@ function animate() {
     //set the number of frames per animation
     let numberOfFrames = 7;
 
-    //create a variable that only cycles between 0 and the frameNumber
+    //create a variable that only cycles between 0 and the numberOfFrames, and controls the speed of the animation
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
 
     //set frameX in relation to the position in the animation
@@ -93,15 +94,6 @@ function animate() {
     //pull in and scale the spritesheet with drawImage. Now's the time to use all those variables!
     ctx.drawImage(playerWalk, frameX , frameY, spriteWidth, spriteHeight, startingPosX, startingPosY, scaleX, scaleY);
 
-    //create a parent conditional to control the animation speed - the staggerFrames number controls how much time passes between each image change
-    if (gameFrame % staggerFrames == 0) {
-        //create a conditional to loop through only the specific frames you need for the animation
-        if (frameX < 7) {
-            frameX++;
-        } else {
-            frameX = 0;
-        }
-    }
     gameFrame++;
 
     //call the parent function to form an animation loop
