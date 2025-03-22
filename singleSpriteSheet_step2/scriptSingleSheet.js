@@ -73,7 +73,7 @@ animationStates.forEach(function (singleAnimation, index) {
     spriteAnimations[singleAnimation.name] = frames;
 });
 
-//add a variable to the animate function that can be used to trigger each animation by name
+//animation function
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
@@ -81,7 +81,6 @@ function animate() {
     let numberOfFrames = spriteAnimations[playerState].location.length;
 
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
-    console.log(staggerFrames);
 
     // create variables that will change based on the animation's height and frame number position
     let frameX = spriteWidth * position;

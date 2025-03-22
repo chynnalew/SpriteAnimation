@@ -36,15 +36,13 @@ const scaleY = 400;
 const startingPosX = -120;
 const startingPosY = -125;
 let gameFrame = 0;
-const staggerFrames = 15;
-
-//create a variable to hold the animation (playerState)
+//set the initial staggerFrames speed (changes with a slider input)
+let staggerFrames = 15;
+//set the initial player state (changes with click functions)
 let playerState = 'walk right'
 
-// create an empty array to hold the data for all the different animations
 const spriteAnimations = [];
 
-//create a variable that stores the names and number of frames for each animation
 const animationStates = [
     {
         name: 'walk right',
@@ -60,7 +58,7 @@ const animationStates = [
     }
 ]
 
-//create a function that maps out each animation frame's position on the spritesheet into an array
+//map out each animation frame's position on the spritesheet into an array
 animationStates.forEach(function (singleAnimation, index) {
     let frames = {
         location: [],
@@ -73,17 +71,14 @@ animationStates.forEach(function (singleAnimation, index) {
     spriteAnimations[singleAnimation.name] = frames;
 });
 
-//add a variable to the animate function that can be used to trigger each animation by name
+//animation function
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    //use the array map to find the number of frames for the chosen animation
     let numberOfFrames = spriteAnimations[playerState].location.length;
 
     let position = Math.floor(gameFrame / staggerFrames) % numberOfFrames;
-    console.log(staggerFrames);
 
-    // create variables that will change based on the animation's height and frame number position
     let frameX = spriteWidth * position;
     let frameY = spriteAnimations[playerState].location[position].y;
 
@@ -93,11 +88,13 @@ function animate() {
     requestAnimationFrame(animate);
 };
 animate();
+
 /* -------------------------------------------------------
 ----------------------------------------------------------
 3. TRIGGERING THE ANIMATION
 -----------------------------------------------------------
 --------------------------------------------------------- */
+
 function walkDown() {
     playerState = 'walk down';
 }
@@ -107,3 +104,15 @@ function walkUp() {
 function walkRight() {
     playerState = 'walk right';
 }
+
+/* -------------------------------------------------------
+----------------------------------------------------------
+4. SPEED CONTROL
+-----------------------------------------------------------
+--------------------------------------------------------- */
+const sliderInput = document.getElementById('sliderSpeed');
+
+sliderInput.addEventListener('change', function () {
+    staggerFrames = this.value;
+    console.log(staggerFrames);
+});
